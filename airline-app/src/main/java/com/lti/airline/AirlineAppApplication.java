@@ -1,4 +1,4 @@
-package com.lti.airline.airlineapp;
+package com.lti.airline;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
