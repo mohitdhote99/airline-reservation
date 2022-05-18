@@ -2,7 +2,10 @@ package com.lti.airline.beans;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -11,12 +14,14 @@ public class User {
 	
 	@Id
 	@Column(name = "USER_ID")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "userId_generator")
+	@SequenceGenerator(name="userId_generator", sequenceName = "userId_generator",initialValue=100,allocationSize=1)
 	private int userId;
-	
+
 	@Column(name = "USER_NAME")
 	private String userName;
 	
-	@Column(name = "USER_EMAIL")
+	@Column(name = "USER_EMAIL",unique=true)
 	private String userEmail;
 	
 	@Column(name = "USER_GENDER")
@@ -94,7 +99,7 @@ public class User {
 		return userContact;
 	}
 
-	public void setUserContact(int userContact) {
+	public void setUserContact(long userContact) {
 		this.userContact = userContact;
 	}
 

@@ -1,7 +1,6 @@
 package com.lti.airline.services;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,14 +22,12 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public void addUser(User p) {
-		// TODO Auto-generated method stub
-		
+	public User addUser(User u) {
+		return dao.addUser(u);
 	}
 
 	@Override
 	public User searchUserById(int id) {
-		// TODO Auto-generated method stub
 		return dao.searchUserById(id);
 	}
 
@@ -39,5 +36,22 @@ public class UserServiceImpl implements UserService{
 		List<User> ul = dao.listAllUser();
 		return ul;
 	}
+	
+
+	@Override
+	public boolean updateUser(int i, User uobj) {
+		return dao.updateUser(i, uobj);
+	}
+
+	@Override
+	public boolean loginUser(User uobj) {
+		return dao.loginUser(uobj);
+	}
+
+	@Override
+	public User serachUserByemail(String email) {
+		return dao.serachUserByemail(email);
+	}
+
 
 }
