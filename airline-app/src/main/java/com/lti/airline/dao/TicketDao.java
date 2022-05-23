@@ -2,7 +2,6 @@ package com.lti.airline.dao;
 
 import java.util.List;
 
-import com.lti.airline.beans.Flight;
 import com.lti.airline.beans.Ticket;
 import com.lti.airline.exp.TicketExp;
 

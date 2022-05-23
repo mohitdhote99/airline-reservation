@@ -41,13 +41,11 @@ public class FlightDaoImpl implements FlightDao {
 	
 	@Override
 	public List<Flight> searchflightBysource(String flightSour, String flightDest) {
-		// TODO Auto-generated method stub
-		/*TypedQuery<Flight> qry = entityManager.createQuery(
-		"Select e from Flight e where e.flightSour='" + flightSour + "' and e.flightDest='" + flightDest + "'",Flight.class);*/
-		Query qry = entityManager.createQuery("Select f from Flight f");
-		List<Flight> cc = qry.getResultList();
-		System.out.println(cc);
-		return cc;	
+//		TypedQuery<Flight> qry = entityManager.createQuery("Select e from Flight e where e.flightSour='" + flightSour + "' and e.flightDest='" + flightDest + "'",Flight.class);
+		Query qry = entityManager.createQuery("Select e from Flight e where e.flightSour='" + flightSour + "' and e.flightDest='" + flightDest + "'");
+		List<Flight> resultList = qry.getResultList();
+		System.out.println("login result " + resultList.toString());
+		return resultList;
 	}
 	
 	

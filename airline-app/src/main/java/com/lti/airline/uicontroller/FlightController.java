@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.lti.airline.beans.Flight;
 import com.lti.airline.beans.User;
+import com.lti.airline.exp.FlightExp;
+import com.lti.airline.exp.TicketExp;
 import com.lti.airline.services.FlightService;
 
 @CrossOrigin(origins="*")
@@ -26,25 +28,49 @@ public class FlightController {
 	//http://localhost:8282/Flight/searchflight/f101
 		@GetMapping(path="/searchflight/{id}",produces="application/json")
 		public Flight getflightwithId(@PathVariable(value="id") String id) {
-			return flightservice.getFlightById(id);
+			try {
+				return flightservice.getFlightById(id);
+			} catch (FlightExp e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return null;
 		}
 	
 		//http://localhost:8595/Flight/addFlight
 		@PostMapping("/addFlight")
 		public void addflights(@RequestBody Flight u) {
-			flightservice.addFlight(u);
+			try {
+				flightservice.addFlight(u);
+			} catch (FlightExp e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		
 		//http://localhost:8282/Flight/flightlist
 		@GetMapping("/flightlist")
 		public List<Flight> listAllFlight(){
-			return flightservice.listAllFlight();
+			try {
+				return flightservice.listAllFlight();
+			} catch (FlightExp e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return null;
 		}
 		
 		//http://localhost:8282/Flight/flightBySourceDest
 		@PostMapping(path="/flightBySourceDest",produces="application/json")
-		public List<Flight>  searchflightBysource(@RequestBody Flight fobj) {
-			return flightservice.searchflightBysource(fobj.getFlightSour(),fobj.getFlightDest());
+		public List<Flight> searchflightBysourceandDesti(@RequestBody Flight fobj) {
+			try {
+				return flightservice.searchflightBysource(fobj.getFlightSour(),fobj.getFlightDest());
+			} catch (FlightExp e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				return null;
+			}
+
 		}
 		
 }

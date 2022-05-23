@@ -1,7 +1,6 @@
 package com.lti.airline.dao;
 
 
-import com.lti.airline.beans.Flight;
 import com.lti.airline.beans.Ticket;
 
 import java.util.List;
